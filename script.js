@@ -9,48 +9,7 @@
  * 6. Smooth Back-to-Top Button
  */
 
-const box = document.querySelector('.hero-banner-image-wrap');
-const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
 
-const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF'.split('');
-const fontSize = 16;
-let drops = [];
-let timer = null;
-
-function resize() {
-  canvas.width = box.clientWidth;
-  canvas.height = box.clientHeight;
-  drops = Array(Math.floor(canvas.width / fontSize)).fill(1);
-}
-
-function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#00ff88';
-  ctx.font = fontSize + 'px monospace';
-
-  drops.forEach((y, i) => {
-    const text = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillText(text, i * fontSize, y * fontSize);
-    if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  });
-}
-
-box.addEventListener('mouseenter', () => {
-  resize();
-  clearInterval(timer);
-  timer = setInterval(draw, 40);
-});
-
-box.addEventListener('mouseleave', () => {
-  setTimeout(() => clearInterval(timer), 400);
-});
-
-window.addEventListener('resize', resize);
-
-document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 1. NEON LIGHTBOX MODAL (Click-to-Enlarge)
   // =========================================================================
