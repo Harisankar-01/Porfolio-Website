@@ -573,31 +573,6 @@ img {
   background-color: var(--accent-emerald);
   box-shadow: 0 0 10px var(--accent-emerald);
 }
-/* Matrix Animation*/
-.hero-banner-image-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
-#matrix-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-banner-image-wrap:hover #matrix-canvas {
-  opacity: 1;
-}
-
-.banner-floating-badge {
-  z-index: 3; /* keeps the badge above the rain */
-}
 
 
 /* --------------------------------------------------------------------------
