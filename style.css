@@ -66,7 +66,7 @@
   --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .writeup {
-  max-height: 400px;   /* height at which scrolling starts */
+  max-height: 100px;   /* height at which scrolling starts */
   overflow-y: auto;    /* scrollbar appears only when content overflows */
 }
 
