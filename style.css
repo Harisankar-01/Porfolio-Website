@@ -65,6 +65,10 @@
   --transition-fast: 0.18s ease;
   --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.writeup {
+  max-height: 400px;   /* height at which scrolling starts */
+  overflow-y: auto;    /* scrollbar appears only when content overflows */
+}
 
 /* Light Theme Variables */
 [data-theme="light"] {
