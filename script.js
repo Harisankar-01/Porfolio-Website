@@ -229,3 +229,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+  // =========================================================================
+  // 7. WRITE-UPS SECTION OVERFLOW SCROLL (Scrolls when items > 3)
+  // =========================================================================
+  const writeupsList = document.querySelector('.writeups-list');
+  const MAX_VISIBLE_WRITEUPS = 3;
+
+  function updateWriteupsScroll() {
+    if (!writeupsList) return;
+    const cards = writeupsList.querySelectorAll('.writeup-card');
+
+    if (cards.length > MAX_VISIBLE_WRITEUPS) {
+      writeupsList.classList.add('has-scroll');
+
+      const listStyles = window.getComputedStyle(writeupsList);
+      const gap = parseFloat(listStyles.rowGap || listStyles.gap) || 16;
+      const paddingTop = parseFloat(listStyles.paddingTop) || 0;
+      const paddingBottom = parseFloat(listStyles.paddingBottom) || 0;
+
+      let visibleHeight = paddingTop + paddingBottom;
+      for (let i = 0; i < MAX_VISIBLE_WRITEUPS; i++) {
+        visibleHeight += cards[i].getBoundingClientRect().height;
+      }
+      visibleHeight += gap * (MAX_VISIBLE_WRITEUPS - 1);
+
+      writeupsList.style.maxHeight = `${Math.ceil(visibleHeight)}px`;
+    } else {
+      writeupsList.classList.remove('has-scroll');
+      writeupsList.style.maxHeight = '';
+    }
+  }
+
+  updateWriteupsScroll();
+  window.addEventListener('resize', updateWriteupsScroll);
+  window.addEventListener('load', updateWriteupsScroll);
+]);
