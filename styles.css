@@ -1266,13 +1266,53 @@ img {
   margin-bottom: 56px;
 }
 
+/* begining of scroll */
 /* Labs Column */
 .writeups-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  scroll-behavior: smooth;
 }
 
+/* Enable vertical scroll once write-ups exceed 3 items */
+.writeups-list.has-scroll,
+.writeups-list:has(.writeup-card:nth-child(4)) {
+  max-height: 460px; /* Fallback height for ~3 cards; synced dynamically in script.js */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 8px 4px 2px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-hover) transparent;
+}
+
+.writeups-list.has-scroll::-webkit-scrollbar,
+.writeups-list:has(.writeup-card:nth-child(4))::-webkit-scrollbar {
+  width: 6px;
+}
+
+.writeups-list.has-scroll::-webkit-scrollbar-track,
+.writeups-list:has(.writeup-card:nth-child(4))::-webkit-scrollbar-track {
+  background: var(--border-subtle);
+  border-radius: 6px;
+}
+
+.writeups-list.has-scroll::-webkit-scrollbar-thumb,
+.writeups-list:has(.writeup-card:nth-child(4))::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 6px;
+}
+
+.writeups-list.has-scroll::-webkit-scrollbar-thumb:hover,
+.writeups-list:has(.writeup-card:nth-child(4))::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-primary);
+}
+
+.writeup-card {
+  /* ...existing styles... */
+  flex-shrink: 0;
+}
+/*end of scroll code*/
 .writeup-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
