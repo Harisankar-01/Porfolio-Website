@@ -1278,7 +1278,7 @@ img {
 /* Enable vertical scroll once write-ups exceed 3 items */
 .writeups-list.has-scroll,
 .writeups-list:has(.writeup-card:nth-child(4)) {
-  max-height: 460px; /* Fallback height for ~3 cards; synced dynamically in script.js */
+  max-height: 400px; /* Fallback height for ~3 cards; synced dynamically in script.js */
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2px 8px 4px 2px;
