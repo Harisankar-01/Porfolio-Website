@@ -264,4 +264,3 @@ document.addEventListener('DOMContentLoaded', () => {
   updateWriteupsScroll();
   window.addEventListener('resize', updateWriteupsScroll);
   window.addEventListener('load', updateWriteupsScroll);
-]);
